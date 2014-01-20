@@ -1,0 +1,37 @@
+1. 自定义控件属性设置
+ToolboxItem
+有没有试过写一个用户控件后，想它不出现在工具箱中，当然有，有时候是控件的Designer部分没有写好或没写，有时候是控件一拖出来就报错，有时候是内部使用的控件，不想别人一引用DLL就出现控件。其它设置方法可以很简单。
+[ToolboxItem(false)]
+public class MyPanel : UserControl
+这样就可以了。“可恶”的用户控件就自动隐藏了，不出现在工具箱中。不过，如果你不知道这样的话，可以会引来一大堆的烦事。
+
+ToolboxBitmap
+写好一个用户控件后，在工具箱中出来的是一个蓝色的齿轮，这就不是很漂亮了，也不能够直观地表达自己的意图。如果更不幸的你的控件的名称好难认的话，其它的开发者会很麻烦的。怎样才能让用户控件在工具箱中显示不同的图标呢?
+[ToolboxBitmap(typeof(System.Windows.Forms.Panel))]
+public class MyPanel : UserControl
+这样就可以了，表示，你所做的用户控件使用的图标是Panel的图标。
+如果不想用系统的图标，要使用自己的图标，可以这样
+[ToolboxBitmap(typeof(MyPanel), "WindowsApplication1.Images.MyPanel.bmp")]
+public class MyPanel : UserControl
+不过，一定要注意路径，WindowsApplication1.Images.MyPanel.bmp表示，解决方案是WindowsApplication1，目录是Images，文件名是MyPanel.bmp，同时，这个图片必须是“嵌入的资源”（点击文件,右键,属性,有一个文件属性,其中,在生成操作中,可以选择"嵌入的资源"）
+
+Category与Description
+[Category("Appearance"), Description("阴影色")]
+public System.Drawing.Color ShadowColor { get { …} set { …} }
+这两个是经常都会写在一起的属性，Category表示类型，如属性框中所显示的外观，布局等，当然，你可以自己写一个，叫“自定义属性”，而Description就是这个属性的描述，用来说明属性有什么用途。这两个的设置相对都比较简单，可以说，一看就知道，不过提一下，Appearance是特殊的词，在属性面板中，它就是外观一栏。
+
+DefaultValue
+[DefaultValue(typeof(Color), "DarkGray")]
+public System.Drawing.Color ShadowColor { get { …} set { …} }
+用于设置默认的值，对于string,bool,int，可以直接写出来，如[DefaultValue(10)]，这是可以的，不过，不是这三种类型的话，就比较麻烦，一定要先转化为string才能设置成功。如上面的DarkGray，这是系统定义的颜色，这还是比较好处理的。不过，如果是一些自定义的颜色，如颜色是128,0,128，你应该将128转为16进制，写成0x800080，前缀0x是一定要加的。最后就这样
+[DefaultValue(typeof(Color), "0x800080")]
+
+Browsable
+表示，是否在属性面板中显示这个属性
+[Browsable(true)]
+表示，将在属性面板中显示这个属性。
+
+DesignerSerializationVisibility
+表示，是否在*.Designer.cs文件中将设置的代码写出来，也就是是否要实现序列化
+[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+表示需要实现序列化。
