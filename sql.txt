@@ -1,0 +1,68 @@
+sqlserver: function
+CREATE function [dbo].[Get_StrArrayLength]
+(
+  @str varchar(1024),  --要分割的字符串
+  @split varchar(10)  --分隔名字
+)
+ returns nvarchar(1024)
+ as
+ begin
+  declare @location int
+  declare @start int
+  declare @length int
+  declare @resul nvarchar(1024)
+
+  set @str=ltrim(rtrim(@str))
+  set @location=charindex(@split,@str)
+  set @str=substring(@str,@location,len(@str))
+  set @length=charindex('[[]]',@str)
+  set @resul =substring(@str,0,@length)
+  return substring(@resul,len(@split+':')+1,len(@resul))
+end
+
+2.sys.objects sysobjects 区别
+
+3.  更具数据库-> 表-> 列 
+select * from sys.columns where object_id =object_id('bgfa')and is_identity=0 order by column_id 
+
+
+mysql：
+1.  更具数据库-> 表-> 列 
+SELECT * FROM COLUMNS WHERE extra!='auto_increment' AND table_Name='bgfa' AND table_schema='wp' ORDER BY ordinal_position
+
+2. 游标
+
+
+sqlserver:(获取明细知道扩充字段)
+declare @cksj varchar(1024)
+declare @result varchar(1024)
+declare @split varchar(30)
+declare @kcCol varchar(50)
+
+set @kcCol='cctt'
+set @split='/'
+set @result=''
+
+declare cur_cksj cursor  for select kcsj from sj_ydj_mx where erpid='{0}'
+
+open cur_cksj
+
+fetch next from cur_cksj into @cksj
+while @@fetch_status=0
+begin
+	set @cksj=dbo.Get_StrArrayLength(@cksj,@split)
+	if(@cksj!='')
+		begin
+			set @result=@result+@split+@cksj
+		end
+
+fetch next from cur_cksj into @cksj
+end
+set @result=substring(ltrim(rtrim(@result)),len(@split)+1,len(@result))
+print @result
+close cur_cksj
+deallocate cur_cksj
+go
+
+
+
