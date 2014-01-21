@@ -1,0 +1,95 @@
+远程桌面连接命令 mstsc /v: 192.168.1.250 /console 
+ 
+cmd          运行        command 
+删除文件        rd        文件名/S 
+创建文件        MD        文件名  
+1.        net user admin godmour /add 新建一个用户名为 admin 密码为 godmour 默认为user组成员 
+2.        net user admin /del 将用户名为admin的用户删除 
+3.        net user admin /active:no        将用户admin禁用 
+4.        net user admin /active:yes 将用户admin激活 
+5.        net user admin 查看拥护admin用户的情况 
+6.        net localgroup administratros admin /add 提升用户权限 
+7.        net view    \\IP 查看远程主机共享资源 
+8.        net use            x:\\IP\sharename 远程影射本地盘符 Z （建立连接 net use \\IP\IPC$"password" /user:"name") 
+9.        net user admin godmour        把admin的密码修改成 godmour 
+10. net start          servername        启动 telnet        服务 
+          net start          servername        停止 telnet        服务 
+运行 输入cmd 回车在命令提示符下输入  
+for %1 in (%windir%\system32\*.dll) do regsvr32.exe /s %1  
+还原系统 
+tracert                61.144.56.101        查看路由是否正常工作 
+netstat命令 
+netstat [-r] [-s] [-n] [-a]。 
+当然，你也可以利用“netstat /?”命令来查看一下该命令的使用格式以及详细的参数说明 
+netstat参数含义如下 
+　　-r 显示本机路由表的内容 
+　　-s 显示每个协议的使用状态（包括TCP协议、UDP协议、IP协议） 
+　　-n 以数字表格形式显示地址和端口 
+　　-a 显示所有主机的端口号 
+运行Netstat -a命令将显示计算机上网时与外部之间的所有连接，计算机端口与外部的连接情况等；而Netstat  
+-s命令则显示电脑网络连接协议的统计信息。这样你就可以看到当前你的电脑上网络在进行哪些连接，数据包发 
+送和接收的详细情况等等 
+ 
+添加或删除程序 control appwiz.cpl  
+管理工具            control admintools 
+attrib　 设置文件属性          ctty　　 改变控制设备        defrag        磁盘碎片整理        doskey 调用和建立DOS宏命令  
+debug 　 程序调试命令          emm386 　扩展内存管理        fc　　　 文件比较            fdisk　 硬盘分区  
+lh/loadhigh　　将程序装入高端内存        move        移动文件，改目录名        more　　　分屏显示  
+prompt　　　        设置提示符                set 　设置环境变量              smartdrv　设置磁盘加速器 
+setver 　　 　 设置版本                  subst 路径替换                  vol 　　        显示指定的磁盘卷标号  
+xcopy 　　　        拷贝目录和文件            mstsc XP自带远程                secpol.msc /s            本地安全策略 
+services.msc /s          服务                  compmgmt.msc        计算机管理        jsjgl.msc 
+eventvwr.msc /s          事件查看器            odbcad32.exe        数据源 (ODBC)          perfmon.msc /s          性能 
+comexp.msc              组件服务              control userpasswords2          察看当前XP用户 
+gpedit.msc              组策略                regedit            注册表            dxdiag        DirecTX 诊断工具 
+gpedit.msc-----组策略                    winver---------检查Windows版本            wmimgmt.msc----打开windows管理体系结构(WMI)  
+wupdmgr--------windows更新程序          wscript--------windows脚本宿主设置        write----------写字板  
+winmsd---------系统信息                  wiaacmgr-------扫描仪和照相机向导        winchat--------XP自带局域网聊天  
+mem.exe--------显示内存使用情况          Msconfig.exe---系统配置实用程序          mplayer2-------简易widnows media player  
+mspaint--------画图板                    mplayer2-------媒体播放机                magnify--------放大镜实用程序  
+mmc------------打开控制台                mobsync--------同步命令                  drwtsn32------ 系统医生  
+devmgmt.msc--- 设备管理器                dfrg.msc-------磁盘碎片整理程序          diskmgmt.msc---磁盘管理实用程序  
+dcomcnfg-------打开系统组件服务          ddeshare-------打开DDE共享设置            dvdplay--------DVD播放器  
+net stop messenger---停止信使服务        net start messenger--开始信使服务        notepad--------打开记事本  
+nslookup-------网络管理的工具向导        ntbackup-------系统备份和还原            narrator-------屏幕“讲述人”  
+ntmsmgr.msc----移动存储管理器            ntmsoprq.msc-移动存储管理员操作请求 netstat -an----(TC)命令检查接口  
+syncapp--------创建一个公文包            sysedit--------系统配置编辑器            sigverif-------文件签名验证程序  
+sndrec32-------录音机                    shrpubw--------创建共享文件夹            secpol.msc-----本地安全策略  
+syskey---------系统加密，一旦加密就不能解开，保护windows xp系统的双重密码  
+services.msc---本地服务设置              Sndvol32-------音量控制程序              sfc.exe--------系统文件检查器  
+sfc /scannow---windows文件保护          tsshutdn-------60秒倒计时关机命令        tourstart------xp简介（安装完成后出现的漫游xp程序）  
+taskmgr--------任务管理器                eventvwr-------事件查看器                eudcedit-------造字程序  
+explorer-------打开资源管理器            packager-------对象包装程序              perfmon.msc----计算机性能监测程序  
+progman--------程序管理器                regedit.exe----注册表                    rsop.msc-------组策略结果集  
+regedt32-------注册表编辑器              rononce -p ----15秒关机                  regsvr32 /u *.dll----停止dll文件运行  
+regsvr32 /u zipfldr.dll------取消ZIP支持            cmd.exe--------CMD命令提示符  
+chkdsk.exe-----Chkdsk磁盘检查            certmgr.msc----证书管理实用程序          calc-----------启动计算器 
+charmap--------启动字符映射表            cliconfg-------SQL SERVER 客户端网络实用程序        Clipbrd--------剪贴板查看器  
+conf-----------启动netmeeting            compmgmt.msc---计算机管理                cleanmgr-------垃圾整理  
+ciadv.msc------索引服务程序              osk------------打开屏幕键盘              odbcad32-------ODBC数据源管理器  
+oobe/msoobe /a----检查XP是否激活        lusrmgr.msc----本机用户和组              logoff---------注销命令  
+iexpress-------木马捆绑工具，系统自带          Nslookup-------IP地址侦测器        fsmgmt.msc-----共享文件夹管理器  
+utilman--------辅助工具管理器            gpedit.msc-----组策略                    cleanmgr-------垃圾整理  
+ciadv.msc------索引服务程序              odbcad32-------ODBC数据源管理器          oobe/msoobe /a----检查XP是否激活  
+lusrmgr.msc----本机用户和组              logoff---------注销命令                  iexpress-------木马捆绑工具，系统自带  
+Nslookup-------IP地址侦测器              fsmgmt.msc-----共享文件夹管理器          utilman--------辅助工具管理器 
+DOS——Disk Operation System 磁盘操作系 
+C: 盘符        Path 路径        Filename        文件名        .ext 扩展名        Filespec 文件标识符 
+[ ]          方括号中的项目是可选项，用户可以根根据需要不输入这些内容 
+{ }          大括号表示其中的项目必选一项  
+|            竖线表示两侧的内容可取其一  
+…          表示可重复项 
+*            表示一个字符串 
+？          只代表一个字符 
+查找以字母y开头的所有文件，可以输入以下命令：dir y*.*；如果要查找所有扩展名为exe的文件，可以用dir .exe。？只 
+代表一个字符，例如我要查找第二个字母为s的所有文件，可以输入：DIR ?s*.*。 
+dir 
+[格式] dir [C:][path][filename][.ext][/o][/s][/p][/w][/a] 
+dir是DOS命令中最常用的一个 
+/p 显示信息满一屏时，暂停显示，按任意键后显示下一屏 
+/o 排序显示。o后面可以接不同意义的字母 
+/w 只显示文件名目录名，每行五个文件名。即宽行显示 
+/s 将目录及子目录的全部目录文件都显示 
+cd是英文change directory(改变目录）的缩写 
+[格式] cd [C:][path]        逐层退出（cd..） 
+copy在英文中是复制的意思
