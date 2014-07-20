@@ -1,0 +1,25 @@
+1.mysqldump.这个不是mysql 里面的命令。是和mysql.exe平级的mysqldump.exe.所以直接在cmd里对应的当前目录下执行3命令即可。
+基本格式：mysql [-uroot -p]（选项部分，有很多参数-q是针对大数据准备） database[>path],可选部分。
+
+2.mysql命令读取ｓｑｌ文本source pathfile(使用‘/’作为路径符合)
+
+二,优化
+1.TRUNCATE TABLE用于完全清空一个表。从逻辑上说，该语句与用于删除所有行的DELETE语句等同，但是在有些情况下，两者在使用上有所不同。
+
+对于InnoDB表，如果有需要引用表的外键限制，则TRUNCATE TABLE被映射到DELETE上；否则使用快速删减（取消和重新创建表）。使用TRUNCATE TABLE重新设置AUTO_INCREMENT计数器，设置时不考虑是否有外键限制。
+
+对于其它存储引擎，在MySQL 5.1中，TRUNCATE TABLE与DELETE FROM有以下几处不同：
+
+·         删减操作会取消并重新创建表，这比一行一行的删除行要快很多。
+
+·         删减操作不能保证对事务是安全的；在进行事务处理和表锁定的过程中尝试进行删减，会发生错误。
+
+·         被删除的行的数目没有被返回。
+
+·         只要表定义文件tbl_name.frm是合法的，则可以使用TRUNCATE TABLE把表重新创建为一个空表，即使数据或索引文件已经被破坏。
+
+·         表管理程序不记得最后被使用的AUTO_INCREMENT值，但是会从头开始计数。即使对于MyISAM和InnoDB也是如此。MyISAM和InnoDB通常不再次使用序列值。
+
+·         当被用于带分区的表时，TRUNCATE TABLE会保留分区；即，数据和索引文件被取消并重新创建，同时分区定义（.par）文件不受影响。
+
+TRUNCATE TABLE是在MySQL中采用的一个Oracle SQL扩展。
